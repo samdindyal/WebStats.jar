@@ -10,12 +10,15 @@ public class WebStats {
 	public static void main (String[] args){
 		int maxFollow = 0, maxDepth = 0;
 		String url = "";
-		if (args[0].equals("-pages"))
-			maxFollow = Integer.parseInt(args[1]);
-		if (args[2].equals("-path"))
+		for (int i = 0; i < args.length-1; i++)
 		{
-			maxDepth = Integer.parseInt(args[3]);
-			url = args[4];
+			if (args[i].equals("-pages"))
+				maxFollow = Integer.parseInt(args[i+1]);
+			else if (args[i].equals("-path"))
+			{
+				maxDepth = Integer.parseInt(args[i+1]);
+				url = args[i+2];
+			}
 		}
 
 		WebStatsRuntime rt = new WebStatsRuntime(5, maxDepth, maxFollow);
