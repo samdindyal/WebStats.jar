@@ -2,10 +2,10 @@
 
 This is an implementation of WebStats in Java. WebStats is a multithreaded, statistical web crawler which gathers cumulative, as well as separate, tag counts for a starting page and other pages found through anchor tags respectively. The pages followed per web page and the maximum depth are provided by command line arguments.
 
-WebStats can be run from the command line as follows:
+WebStats can be run from the command line as follows after building it with the Makefile provided:
 
 ```bash
-java WebStats -pages 10 -path 3 "http://www.google.ca"
+java -jar WebStats.jar -pages 10 -path 3 "http://www.google.ca"
 ```
 where the <code>-pages</code> flag denotes the maximum amount of pages to follow from each page reached and the <code>-path</code> flag denotes the maximum depth of which to stray from the starting url, which, is the last argument.
 
