@@ -91,7 +91,7 @@ public class WebCrawler {
 	public HashMap<String, Integer> parseHtml() {
 
 		pageIn = fetchHtml() ;
-		Pattern p = Pattern.compile("[<][^!/<][^<>]*[>]") ;
+		Pattern p = Pattern.compile("<[a-zA-Z][a-zA-Z0-9 ]*[^<>]*>") ;
 		Matcher m = p.matcher(pageIn) ;
 		int count = 0, counter = 0;
 		String tag = "", link;
