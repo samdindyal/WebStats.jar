@@ -65,7 +65,7 @@ public class WebCrawler {
   */
 
 	public WebCrawler(String url, int currentDepth, int maxFollow, WebStatsRuntime runtime) {
-		WebCrawler(url, currentDepth, 10, maxFollow, runtime);
+		this(url, currentDepth, 10, maxFollow, runtime);
 	}
 
  /**
@@ -91,9 +91,9 @@ public class WebCrawler {
 	public HashMap<String, Integer> parseHtml() {
 
 		pageIn = fetchHtml() ;
-		Pattern p = Pattern.compile("[<][^!/<>][^<>]*[>]") ;
+		Pattern p = Pattern.compile("[<][^!/<][^<>]*[>]") ;
 		Matcher m = p.matcher(pageIn) ;
-		int count = 0, counter;
+		int count = 0, counter = 0;
 		String tag = "", link;
 
 		while (m.find()) {
@@ -109,7 +109,7 @@ public class WebCrawler {
 					&& currentDepth < maxDepth
 					&& counter < maxFollow)
 				{
-					runtime.actionPerformed(new ActionEvent(new WebCrawler(link, currentDepth+1, maxDepth, maxFollow, (WebStatsRuntime)runtime), 
+					runtime.actionPerformed(new ActionEvent(new WebCrawler(link, currentDepth+1, maxDepth, maxFollow, (WebStatsRuntime)runtime),
 						WebStatsRuntime.NEW_LINK_CODE, null, System.currentTimeMillis(), 0));
 					counter++;
 				}
@@ -123,7 +123,7 @@ public class WebCrawler {
 			count++;
 		}
 
-		runtime.actionPerformed(new ActionEvent(tagCounts, WebStatsRuntime.DONE_PARSING_CODE, 
+		runtime.actionPerformed(new ActionEvent(tagCounts, WebStatsRuntime.DONE_PARSING_CODE,
 			null, System.currentTimeMillis(), 0));
 		return tagCounts;
 	}
@@ -143,7 +143,7 @@ public class WebCrawler {
 
 	public String toString() {
 		tagCounts = parseHtml();
-		String output = "\n---------------------------------------------------\n" 
+		String output = "\n---------------------------------------------------\n"
 		+ url.toString() + "\n---------------------------------------------------";
 		for (String tag : tagCounts.keySet())
 			output += "\n" + tag + ": " + tagCounts.get(tag);
