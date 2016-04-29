@@ -9,8 +9,10 @@ import cps506.a1.core.WebStatsRuntime;
 public class WebStats {
 	public static void main (String[] args){
 		int maxFollow = 0, maxDepth = 0;
-		String url = "";
-		for (int i = 0; i < args.length-1; i++)
+		String url = "http://www.google.ca";
+		if (args.length == 1)
+			url = args[0];
+		for (int i = 0; i < args.length-2; i++)
 		{
 			if (args[i].equals("-pages"))
 				maxFollow = Integer.parseInt(args[i+1]);
