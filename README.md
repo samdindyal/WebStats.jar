@@ -1,4 +1,4 @@
-# WebStats (Java)
+# WebStats.jar
 
 This is an implementation of WebStats in Java. WebStats is a multithreaded, statistical web crawler which gathers cumulative, as well as separate, tag counts for a starting page and other pages found through anchor tags respectively. The pages followed per web page and the maximum depth are provided by command line arguments.
 
